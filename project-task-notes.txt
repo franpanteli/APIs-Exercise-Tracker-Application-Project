@@ -1,8 +1,2 @@
-These are my notes on the project task page. This project is called "URL Shortener Microservice." The URL for the page which these notes are on is https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice
+These are my notes on the project task page. This project is called "Exercise Tracker." The URL for the page which these notes are on is https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker
 
-EDIT THE ABOVE 
-
-FIND A BASIS VERSION
-
-- MAKE NOTES ON IT HERE:
-	-> ETC 
