@@ -1,7 +1,7 @@
 Running the project locally:
 
 1. git clone https://github.com/franpanteli/APIs-Exercise-Tracker-Application-Project.git
-	-> This might take a few seconds, as a function of Wi-Fi speed 
+	-> This can take a few seconds, as a function of Wi-Fi speed 
 
 2. cd into its local directory 
 
