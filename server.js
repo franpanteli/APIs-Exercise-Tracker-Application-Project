@@ -1,4 +1,3 @@
-
 /*
 	Defining constants for the project <- 1/6:
 		-> The `require` function is used to import modules into JavaScript
@@ -45,11 +44,32 @@ const app = express();
 let users = [];
 let exercises = [];
 
+/*
+	-> `app` is the variable which stores the instance of the express application for the project
+	-> The .use method is implemented three times in this block 
+	-> This sets middleware for the application, using the Express.js framework 
 
+	The three uses of the .use method throughout this block:
+		The first use of the .use method <- `cors` middleware for security: 
+			-> This use adds Cors middleware into the application 
+			-> This middleware is for security (CORS is Cross-Origin Resource Sharing)
+			-> This limits which webpages can make requests to the server 
 
+		The second use of the .use method <- middleware so the server can send the client static files (e.g the project HTML file):
+			-> The middleware which we are using here is for static file serving 
+			-> The argument of this function is the directory on the server where the static assets it's sending the client are
+			-> The static assets in this case are the project HTML and CSS files, and others
+			-> These are hosted (stored) on the server - in the `public` directory - which we later configure it to send to the client 
+        when they make requests 
 
-
-
+		The third use of the .use method <- so the server can parse request bodies sent to it by the client:
+			-> The middleware which this uses is from the `body-parser` module 
+			-> This parses incoming request objects from the client 
+			-> This takes those request objects and puts the body portion of them into the `req.body` object, which we use later for 
+        defining the server route handlers <- how the server responds when it receives these requests 
+			-> The argument of this (extended: false) means that we want parsed URL data, for example, to take the syntax of a string or an 
+        array 
+*/
 
 app.use(cors());
 app.use(express.static('public'));
