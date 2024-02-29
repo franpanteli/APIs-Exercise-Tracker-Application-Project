@@ -15,7 +15,7 @@ These are my notes on the project task page. This project is called "Exercise Tr
 	Method #3: Using a site builder
 		-> They don't specify which site builder 
 		-> You can use a site builder to complete the project
-		-> It needs to include all of the files from the project Github boilerplate code
+		-> It needs to include all of the files from the project GitHub boilerplate code
 		-> These files need to be included for the assessment tests when the project is submitted 
 
 - An example structure response: 
