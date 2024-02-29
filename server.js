@@ -114,6 +114,64 @@ app.get('/', (req, res) => {
 
 
 
+// CURRENT WORKING BACKUP
+/*
+	The idea behind the two HPPT POST requests in this block of code:
+		-> It's an HTTP POST request to this endpoint (argument), and this is the arrow (callback) function its executing 
+		-> We define this callback function inside the block
+		-> The first block is for HHTP POST requests to add a client to the database, and the second HTTP POST request in this block is to log exercises which they have done 
+		-> Either the client enters a new user or an exercise which has been done 
+		-> In both of thee cases, we are defining HTTP POST requests 
+		-> These take the contents of the request object, stored in `req.body` <- this is from the `body-parser` middleware 
+		-> They then format the contents of this into a response (`res`) object
+		-> This response object follows the syntax of a JSON (JavaScript) object in both cases
+			-> Cases being -> either the client enters a new user, or logs a new expertise 
+			-> This object is then pushed back to the client and logged in the local memory 
+
+	The specifics of the first HHTP POST request in this block of code <- the case that the client logs a new user:
+		-> The client makes an HHTP POST request to the API endpoint on the server 
+		-> The endpoint to which this is made is the first argument in this function 
+		-> The second argument to this method is the callback function which will be executed when the request reaches the server
+		-> This has two arguments, the request object which is send from the client to the server, and the response object which is sent from the server to the client 
+
+		Two constants are defined as part of this:
+			-> This is the HTTP POST request for the case that the client submits a new user (rather than a new exercise)
+			-> The request object contains this information which the client entered about the user which is being added to the memory in our application 
+			-> This user information is stored in the request body 
+			-> This HHTP POST request is what the server does with this information when it receives it
+			-> The first variable which its callback function defines takes the value of the user information which the client entered in the request body 
+			-> The second variable (`newUser`) we define takes the syntax of the JSON (JavaScript) object which we want the application to return to the client once they've entered the new user
+				-> In this instance of the application, we have a memory of all of the users which have been entered into that database
+				-> The second element in the variable which we define in this block of code contains the index of this user which the cline that entered into the database
+				-> The index of the user which we are currently entering into the database is the same as the index of the last user which was entered, incremented by one
+				-> The second element of this variable stored the user name which the client entered the request body 
+
+		Returning the response object back to the client in the correct syntax:
+			-> The final two lines of code in this HTTP POST request return the contents of the `newUser` variable back to the client 
+			-> The first line logs the contents of that user to the memory array which we previously initialised for the users, using the .push method 
+			-> The final line of this POST request sends the contents of the `newUser` variable back to the client in the syntax of a JSON (JavaScript) response object 
+
+	The specifics of the second HHTP POST request in this block of code <- the case that the client logs a new exercise:
+		-> INSERT FROM NOTABILITY ANOTATIONS
+*/
+
+
+-> go through the first HHTP POST request in the block on notability and add In some of the points in case we missed them 
+-> do the next (second) HPPT POST request in the block (you know the drill)
+-> read through the entire thing 
+-> put it into Grammarly 
+-> then the block is done 
+
+
+
+
+
+
+
+
+
+
+
 // Create a new user
 app.post('/api/users', (req, res) => {
   const { username } = req.body;
