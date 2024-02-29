@@ -75,14 +75,31 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-
-
-
-
-
-
-
+/*
+	This use of the .get method for the project:
+		-> This block of code sets up a route handler for the server
+		-> When an HTTP GET request is submitted to the server by the client, and this request is made to the root path on the server 
+		-> We have the client and the server
+		-> The client can make requests to the server
+		-> One example of this is an HTTP GET request
+		-> When this is made to the server, the code which tells it how to respond is a route handler, like the one defined here
+		-> This uses the .get method: 
+			-> The first argument to this is the path on the server which receives the HTTP GET request
+			-> The second argument to this is the function which is executed when the call is made to this path - this is the callback 
+				function 
+			-> The syntax of this is an arrow function, and its contents are defined inside the code embedded in the use of the .get method 
+				here 
+		-> We are telling the server how to respond when the client accesses the main port that it's listening to 
+			-> The .get method is otherwise normally used when the server is trying to retrieve (get) information to send back to the client 
+			-> The information we are sending back here is the index.html file for the project -> this is an example where a static file is 
+				served
+			-> We do this using the .sendFile method in the callback function 
+			-> `res.` is the response object <- this is the object which the server sends back to the client 
+			-> The argument to this function is the path of the file on the server which we want to send back to the client (not the path to 
+				which the HTTP GET request was originally made)
+			-> The variable `__dirname` is a global variable in Node.js and represents the current directory 
+		-> This block of code is a route handler for HHP GET requests to the server 
+*/
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
