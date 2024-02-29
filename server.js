@@ -70,7 +70,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const listener = app.listen(PORT, () => {
   console.log('Your app is listening on port ' + PORT);
