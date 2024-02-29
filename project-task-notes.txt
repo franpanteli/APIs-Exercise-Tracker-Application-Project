@@ -1,2 +1,52 @@
 These are my notes on the project task page. This project is called "Exercise Tracker." The URL for the page which these notes are on is https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker
 
+- We are building a full-stack JavaScript application:
+	-> This must be similar in functionality to this https://exercise-tracker.freecodecamp.rocks/
+	-> For the `date` property, the `toDateString` method can be used 
+	-> This method belongs to the `Date` API 
+
+- Methods to write this code:
+	Method #1: clone the boilerplate code from their GitHub repository 
+		-> Complete the exercise locally
+		-> Start on this boilerplate code https://github.com/freeCodeCamp/boilerplate-project-exercisetracker/
+
+	Method #2: They have a Gitpod starter project which you can use to complete the project
+
+	Method #3: Using a site builder
+		-> They don't specify which site builder 
+		-> You can use a site builder to complete the project
+		-> It needs to include all of the files from the project Github boilerplate code
+		-> These files need to be included for the assessment tests when the project is submitted 
+
+- An example structure response: 
+
+    Input exercise into the tracker:
+    {
+      username: "fcc_test",
+      description: "test",
+      duration: 60,
+      date: "Mon Jan 01 1990",
+      _id: "5fb5853f734231456ccb3b05"
+    }
+
+    Input user into the tracker:
+    {
+      username: "fcc_test",
+      _id: "5fb5853f734231456ccb3b05"
+    }
+
+    The log which this should produce:
+    {
+      username: "fcc_test",
+      count: 1,
+      _id: "5fb5853f734231456ccb3b05",
+      log: [{
+        description: "test",
+        duration: 60,
+        date: "Mon Jan 01 1990",
+      }]
+    }
+
+
+
+
