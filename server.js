@@ -1,20 +1,42 @@
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const app = express();
-
-// In-memory storage for users and exercises
 let users = [];
 let exercises = [];
+
+
+
+
+
+
 
 app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
+
+
+
+
+
+
+
+
+
 
 // Create a new user
 app.post('/api/users', (req, res) => {
@@ -32,6 +54,19 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   exercises.push(newExercise);
   res.json(newExercise);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Get user's exercise log
 app.get('/api/users/:_id/logs', (req, res) => {
@@ -53,13 +88,11 @@ app.get('/api/users/:_id/logs', (req, res) => {
   }
 
   const user = users.find(user => user._id === _id);
-
   const log = filteredExercises.map(exercise => ({
     description: exercise.description,
     duration: exercise.duration,
     date: exercise.date,
   }));
-
   const count = filteredExercises.length;
 
   res.json({
@@ -70,8 +103,31 @@ app.get('/api/users/:_id/logs', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const PORT = process.env.PORT || 8080;
 const listener = app.listen(PORT, () => {
   console.log('Your app is listening on port ' + PORT);
 });
