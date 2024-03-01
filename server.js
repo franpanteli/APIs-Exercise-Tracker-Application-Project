@@ -249,15 +249,13 @@ app.get('/api/users/:_id/logs', (req, res) => {
 		The arguments of this are:
 			The port number that the application will use: 
 				-> The value of this is stored in the `port` variable
-				-> The value of this was set at the beginning of this server.js file
+				-> The value of this is set at the beginning in this block of code
 				-> Since this port number is sensitive information, this file imports its value from an external .env (environment) file 
 				-> If this file is non-existent, then we use pipe symbols (`||`) to set its value to 8080  
 
 			The callback function which we want to execute when the server starts listening to the port: 
 				-> We use the .log method here, to write a message in the terminal
-				-> This uses the `$` symbol, so that the user (running the project locally) knows which port the server is listening to 
-					-> This is called a template literal 
-					-> The server is listening to this port, for connections made to it by the client 
+				-> This includes the value of the `PORT` variable, which the server listens to
 
 	There are two stages when the client connects to the server: 
 		-> The client makes requests to the port, by accessing its associated URL  
@@ -274,7 +272,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
 			-> The server must have the correct middleware, depending on the contents of the request object 
 
 	-> We are telling the server to listen for connections made to that port 
-	-> The code earlier which set the port number also dictates which URL the client accesses the microservice from 
+	-> We are also defining the port number which sets the URL the client accesses the application from 
 */
 
 const PORT = process.env.PORT || 8080;
