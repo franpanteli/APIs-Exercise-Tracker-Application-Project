@@ -271,7 +271,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
 			 the query to return 
 */
 
-// To return an exercise log for a user 
+	// To return an exercise log for a user 
 app.get('/api/users/:_id/logs', (req, res) => {
 
 	// Three variables are defined
