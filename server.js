@@ -238,29 +238,44 @@ app.get('/api/users/:_id/logs', (req, res) => {
   });
 });
 
+/*
+	Telling the application to listen to a port:
+		-> `app` is the name of the variable which stores this instance of the Express application
+		-> This project is intended to be run locally
+		-> This block of code uses the .listen method
+		-> This tells the server which port to listen to
+		-> This port number is set in the variable before the .listen method is used  
 
+		The arguments of this are:
+			The port number that the application will use: 
+				-> The value of this is stored in the `port` variable
+				-> The value of this was set at the beginning of this server.js file
+				-> Since this port number is sensitive information, this file imports its value from an external .env (environment) file 
+				-> If this file is non-existent, then we use pipe symbols (`||`) to set its value to 8080  
 
+			The callback function which we want to execute when the server starts listening to the port: 
+				-> We use the .log method here, to write a message in the terminal
+				-> This uses the `$` symbol, so that the user (running the project locally) knows which port the server is listening to 
+					-> This is called a template literal 
+					-> The server is listening to this port, for connections made to it by the client 
 
+	There are two stages when the client connects to the server: 
+		-> The client makes requests to the port, by accessing its associated URL  
+		-> The server can access that same port, by 'listening' to it 
+		-> When the client makes a request to the port via accessing its URL, a request object is sent to the server
+		-> The server then implements route handling and sends back an appropriate response object to the client, via the port 
 
+		For this exchange to happen:
+			-> The server must listen to the port <- this is what this section of code does, and we will know that the server is listening 
+				to the port once the console logs the message which is set here 
+			-> The client must access the port via a URL 
+			-> That URL is specific to the port 	
+			-> The client must make a request -> in this case, by accessing the microservice at that URL 
+			-> The server must have the correct middleware, depending on the contents of the request object 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	-> We are telling the server to listen for connections made to that port 
+	-> The code earlier which set the port number also dictates which URL the client accesses the microservice from 
+*/
 
 const PORT = process.env.PORT || 8080;
 const listener = app.listen(PORT, () => {
