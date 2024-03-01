@@ -190,38 +190,107 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   res.json(newExercise);
 });
 
+/*
+	This block of code is for an HTTP GET request handler:
+		What this block of code does:
+			-> The client makes HTTP GET requests to this server endpoint
+			-> This code defines how the server responds to these requests
+			-> We are instructing the server to send a JSON response object back to the client 
+			-> We want this object to contain an exercise log for the user 
+			-> That response object is in JSON syntax <- a JavaScript object 
+			-> We first need to extract the information for the response object, and then put it into the correct syntax to send back  
 
+		The arguments of this route handler:
+			-> The first argument of this route handler is the path on the server to which the HTTP GET request is made
+			-> The second argument of this route handler contains the arguments of the callback function which is run when requests are made to 
+				the route handler 
+				-> Request (`req`) and response (`res`) objects
 
+		Two constants are defined, to extract information:
+			-> `req` is the request body which the client sent to the server
+			-> We want to extract the information that this contains, so that we can return it to the client in a specific syntax in the response
+				 object 
+			-> `req.params` contains the user's ID and route parameters
+			-> The first variable we define stores this, by extracting this information from it 
+			-> `req.query` contains other parameters about the user -> these are optional query parameters (`from`, `to`, `limit`)
+			-> The second variable we define stores these parameters 
 
+		Retrieve the user's exercises:
+			-> We take the array which stores all of the exercises that have been logged into the server, `exercises`
+			-> Based on the user ID which we previously extracted, we filter this master list stored on the server to extract the exercises for 
+				that user 
+			-> We store these exercises in the `filteredExercises` variable 
 
+		To filter the user's exercises:
+			-> Imagine an arbitrary user whose exercises have been logged into the server's memory 
+			-> We have information about the user, and then the entries for all of the times that they have exercised 
+			-> One user, and multiple entries about their exercise
+			-> We have already extracted this information 
+			-> Since we have all of the times they exercised, we may not want to return information about all of these entries
+			-> To filter out the entries which we don't want, we define three if statements:
+				-> `filteredExercises` is the variable which stores the exercises for that user 
+				-> If we only want the entries from a certain point and the client has specified from, then the first if statement is applied 
+				-> The second if statement is similar, but except with everything up to a certain point 
+				-> If the client specifies the maximum number of exercises that they want in the exercise log for the user, then the final if block
+					 applies this limit 
 
+		Extracting the name of the user:
+			-> Up until this point, the code has only used the ID which represents the user <- their index in the array of entries in the server's
+				memory
+			-> This route handler defines a variable called `user`, which extracts the name of the user based on the ID which represents them 
+			-> All of the users which are stored by the server are stored in an array -> and we are extracting the element which is stored at the 
+				index of that array where the user is stored 
 
+		Formatting the user information into a response:
+			Formatting the user information: 
+				-> We have taken the list of all exercises logged on the server and extracted the ones which are just for that user 
+				-> Then we have taken all of the exercises logged for that user and just extracted the ones we want for them (e.g the exercises 
+					logged within a certain timeframe)
+				-> Now we want to format those into a response which we can send back to the client
+				-> We want the response object to include the date, description and duration of those exercises
+				-> We are doing this mapping using the `log` variable, with the .map method 
+				-> This variable stores each of the pieces of information which we want returned to the client with a key, so we can later return it
+					in the JSON (JavaScript) object to the client 
+		
+			Counting the number of exercises stored for the user:
+				-> `filteredExercises` is the variable which contains the logged exercises for the user which we want to target
+				-> We want the JSON object we return to the client to contain the number of these exercises which are logged for the user 
+				-> This constitutes the length of this variable -> which we store in another, called `count`
+				-> This is obtained with the .length method 
 
+			Returning a JSON response object to the client:
+				-> We return this information to the client in its response object 
+				-> We use the .json method for this 
+				-> This formats the information into a JSON response object, which is sent back to the client and combines the information which we 
+					previously extracted 
+				-> `log` is an array which contains the user's exercises listed on the server 
+		
+		-> This route handler allows the server to return the exercise log of the user 
+		-> This exercise log is stored in the server's memory 
+		-> This allows us to extract the exercise log for a user, depending on the date the exercise was completed and the number of results we want
+			 the query to return 
+*/
 
-
-
-
-
-
-// Get user's exercise log
+// To return an exercise log for a user 
 app.get('/api/users/:_id/logs', (req, res) => {
+
+	// Three variables are defined
   const { _id } = req.params;
   const { from, to, limit } = req.query;
-
   let filteredExercises = exercises.filter(exercise => exercise.userId === _id);
 
+	// Three if blocks
   if (from) {
     filteredExercises = filteredExercises.filter(exercise => exercise.date >= from);
   }
-
   if (to) {
     filteredExercises = filteredExercises.filter(exercise => exercise.date <= to);
   }
-
   if (limit) {
     filteredExercises = filteredExercises.slice(0, limit);
   }
 
+	// Mapping the information we want to return to the user
   const user = users.find(user => user._id === _id);
   const log = filteredExercises.map(exercise => ({
     description: exercise.description,
@@ -230,6 +299,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
   }));
   const count = filteredExercises.length;
 
+	// Putting the response object into the correct syntax   
   res.json({
     _id,
     username: user.username,
