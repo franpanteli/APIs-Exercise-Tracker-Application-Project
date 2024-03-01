@@ -6,7 +6,7 @@ This repository contains my independent problem-solving work, used to produce a 
 
 <img width="777" alt="Screenshot 2024-03-01 at 20 30 19" src="https://github.com/franpanteli/APIs-Exercise-Tracker-Fullstack-Project/assets/131474705/9f015c99-c72a-4c66-a309-8773856a3071">
 
-[My full notes on how to run the application locally are here]([https://github.com/franpanteli/APIs-URL-Shortener-Microservice-Project/blob/main/launching-the-app-locally.txt](https://github.com/franpanteli/APIs-Exercise-Tracker-Project/blob/main/launching-the-app-locally.txt). First, clone this repository with `git clone https://github.com/franpanteli/APIs-URL-Shortener-Microservice-Project.git`.
+[My full notes on how to run the application locally are here]([https://github.com/franpanteli/APIs-URL-Shortener-Microservice-Project/blob/main/launching-the-app-locally.txt](https://github.com/franpanteli/APIs-Exercise-Tracker-Project/blob/main/launching-the-app-locally.txt) . First, clone this repository with `git clone https://github.com/franpanteli/APIs-URL-Shortener-Microservice-Project.git`.
 
 ## API Endpoints
 
