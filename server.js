@@ -105,74 +105,75 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
-
-
-
-
-
-
-
-
-// CURRENT WORKING BACKUP
 /*
-	The idea behind the two HPPT POST requests in this block of code:
-		-> It's an HTTP POST request to this endpoint (argument), and this is the arrow (callback) function its executing 
+	The idea behind these two HTTP POST request handlers:
+		-> It's an HTTP POST request to this endpoint (argument), and this is the arrow (callback) function the server executes 
 		-> We define this callback function inside the block
-		-> The first block is for HHTP POST requests to add a client to the database, and the second HTTP POST request in this block is to log exercises which they have done 
-		-> Either the client enters a new user or an exercise which has been done 
-		-> In both of thee cases, we are defining HTTP POST requests 
-		-> These take the contents of the request object, stored in `req.body` <- this is from the `body-parser` middleware 
-		-> They then format the contents of this into a response (`res`) object
-		-> This response object follows the syntax of a JSON (JavaScript) object in both cases
-			-> Cases being -> either the client enters a new user, or logs a new expertise 
-			-> This object is then pushed back to the client and logged in the local memory 
+		-> The first block instructs the HTTP POST request handler to add the client to the database, and the second HTTP POST request handler 
+			logs exercises 
+		-> Either the client enters a new user or an exercise to be logged
+		-> In both cases, we define route handlers for these HTTP POST requests 
+		-> These take the contents of the request object, stored in `req.body` <- this uses `body-parser` middleware 
+		-> They then format the contents of this, into a response (`res`) object
+		-> This object follows the syntax of a JSON (JavaScript) object
+		-> This object is then pushed back to the client and logged into the local server memory 
 
-	The specifics of the first HHTP POST request in this block of code <- the case that the client logs a new user:
-		-> The client makes an HHTP POST request to the API endpoint on the server 
-		-> The endpoint to which this is made is the first argument in this function 
-		-> The second argument to this method is the callback function which will be executed when the request reaches the server
-		-> This has two arguments, the request object which is send from the client to the server, and the response object which is sent from the server to the client 
+	The first HTTP POST request handler in this block <- the client logs a new user:
+		-> The client makes an HTTP POST request to the server's API endpoint
+		-> The endpoint to which this is made is the first argument of its request handler 
+		-> The second argument is its callback function, to be executed when the request reaches the server
+			-> This has two arguments: the request (`req`) object which is sent from the client to the server, and the response (`res`) object 
+				which is sent from the server to the client 
 
 		Two constants are defined as part of this:
-			-> This is the HTTP POST request for the case that the client submits a new user (rather than a new exercise)
-			-> The request object contains this information which the client entered about the user which is being added to the memory in our application 
+			-> This is the HTTP POST request handler for the case that the client submits a new user, rather than a new exercise
+			-> The request object contains this information which the client entered about the user, to be added to the memory in our application 
 			-> This user information is stored in the request body 
-			-> This HHTP POST request is what the server does with this information when it receives it
-			-> The first variable which its callback function defines takes the value of the user information which the client entered in the request body 
-			-> The second variable (`newUser`) we define takes the syntax of the JSON (JavaScript) object which we want the application to return to the client once they've entered the new user
-				-> In this instance of the application, we have a memory of all of the users which have been entered into that database
-				-> The second element in the variable which we define in this block of code contains the index of this user which the cline that entered into the database
-				-> The index of the user which we are currently entering into the database is the same as the index of the last user which was entered, incremented by one
-				-> The second element of this variable stored the user name which the client entered the request body 
+			-> This HTTP POST request handler instructs the server what to do with this information when it is received 
+			-> The first variable which its callback function defines takes the value of the user information which the client entered into the 
+				request body 
+			-> The second variable (`newUser`) takes the syntax of the JSON (JavaScript) object which we want the application to return to the 
+				client, once the new user has been entered 
+				-> In this instance of the `app`, we have a memory of all of the users which have been entered into that database
+				-> The second element in the variable which we define in this block of code contains the index of this user
+				-> The index of the user which we are currently entering into the database is the same as the index of the last user which was 
+					entered, plus one
+				-> The second element of this variable stores the user name which the client entered into the request body 
 
-		Returning the response object back to the client in the correct syntax:
-			-> The final two lines of code in this HTTP POST request return the contents of the `newUser` variable back to the client 
-			-> The first line logs the contents of that user to the memory array which we previously initialised for the users, using the .push method 
-			-> The final line of this POST request sends the contents of the `newUser` variable back to the client in the syntax of a JSON (JavaScript) response object 
+		Returning the response object to the client in the correct syntax:
+			-> The final two lines of code in this HTTP POST request return the contents of the `newUser` variable to the client 
+			-> The first line logs the contents of that user to the memory array which we previously initialised for the users, using the .push 
+				method 
+			-> The final line of this POST request sends the contents of the `newUser` variable back to the client, in the syntax of a JSON 
+				(JavaScript) response object 
+	
+		-> This first HTTP POST request handler was for adding in a new user
+		-> The first argument in that route handler is the API endpoint on the server, to which the request was made 
+		-> The request body has a JSON object which stores the username 
+		-> Then we give that user an ID based on the number of users already stored in the server memory
+		-> We then add this user to the server memory in an array and send a JSON object back to the client  
 
-	The specifics of the second HHTP POST request in this block of code <- the case that the client logs a new exercise:
-		-> INSERT FROM NOTABILITY ANOTATIONS
+	The second HTTP POST request handler in this block <- what the server does if the client logs a new exercise:
+		What the second route handler in this block of code does:
+			-> This HTTP POST request handler is so the user can log new exercises
+			-> The first argument is the API endpoint on the server to which this request is made
+			-> The second argument is the callback function, what the server does when it receives one of these requests to this endpoint 
+			-> The request body sent to the server for logging exercises contains a lot more information than the one for logging a new user
+			-> All of the constants which we define are extracting the user information from the request body and formatting them into the syntax
+				of a JSON (JavaScript) object to return back 
+			-> As with the first method, except here we have a lot more information 
+			-> The penultimate line in this section takes this object, stored in `newExercise`, and adds it to the array which stores the 
+				previously logged exercises
+			-> The final line returns this object to the client as a response object 
+
+		In more technical terms: 
+			-> The path on the server which is the first argument to the function is called the endpoint 
+			-> The request body must take JSON syntax for this to work 
+			-> `newExercise` is a new instance of an exercise object 	
+			-> All of the entries are stored on the server in an array 
 */
 
-
--> go through the first HHTP POST request in the block on notability and add In some of the points in case we missed them 
--> do the next (second) HPPT POST request in the block (you know the drill)
--> read through the entire thing 
--> put it into Grammarly 
--> then the block is done 
-
-
-
-
-
-
-
-
-
-
-
-// Create a new user
+// To log a new user
 app.post('/api/users', (req, res) => {
   const { username } = req.body;
   const newUser = { _id: users.length + 1, username };
@@ -180,7 +181,7 @@ app.post('/api/users', (req, res) => {
   res.json(newUser);
 });
 
-// Add exercises to a user
+// To log new exercises
 app.post('/api/users/:_id/exercises', (req, res) => {
   const { _id } = req.params;
   const { description, duration, date } = req.body;
