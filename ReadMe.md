@@ -1,4 +1,5 @@
-# APIs-Exercise-Tracker-Project
+# Owner avatar
+#APIs-Exercise-Tracker-Fullstack-Project
 
 [TO RUN THE PROJECT](https://github.com/franpanteli/APIs-Exercise-Tracker-Project/blob/main/launching-the-app-locally.txt)
 
