@@ -5,7 +5,7 @@ This repository contains my independent problem-solving work, used to produce a 
 ## Application Installation & Usage
 <img width="984" alt="Screenshot 2024-03-02 at 13 52 22" src="https://github.com/franpanteli/APIs-Exercise-Tracker-Fullstack-Project/assets/131474705/31684d81-ed55-429d-89b0-c4f4394819d7">
 
-[My full notes on how to run the application locally are here](https://github.com/franpanteli/APIs-URL-Shortener-Microservice-Project/blob/main/launching-the-app-locally.txt). First, clone this repository with `git clone https://github.com/franpanteli/APIs-Exercise-Tracker-Fullstack-Project.git`.
+[My full notes on how to run the application locally are here](https://github.com/franpanteli/APIs-Exercise-Tracker-Fullstack-Project/blob/main/launching-the-app-locally.txt). First, clone this repository with `git clone https://github.com/franpanteli/APIs-Exercise-Tracker-Fullstack-Project.git`.
 
 ## Dependencies
 
